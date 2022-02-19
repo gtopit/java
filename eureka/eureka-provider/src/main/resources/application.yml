@@ -1,0 +1,62 @@
+#eureka:
+  #instance:
+    #lease-expiration-duration-in-seconds: 120
+    #lease-renewal-interval-in-seconds: 60
+---
+server:
+  port: 8081
+spring:
+  config:
+    activate:
+      on-profile: p1
+  application:
+    name: provider-api
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/,http://localhost:8762/eureka/,http://localhost:8763/eureka/
+
+################################????#######################################
+---
+eureka:
+  client:
+    region: gz
+    availability-zones:
+      gz: tianhe
+    prefer-same-zone-eureka: true
+    serviceUrl:
+      tianhe: http://ze11:9101/eureka/,http://ze12:9102/eureka/,http://ze13:9103/eureka/
+      panyu: http://ze21:9201/eureka/,http://ze22:9202/eureka/,http://ze23:9203/eureka/
+  instance:
+    metadata-map:
+      zone: tianhe
+server:
+  port: 7001
+spring:
+  config:
+    activate:
+      on-profile: zp1
+  application:
+    name: provider-api
+
+---
+eureka:
+  client:
+    region: gz
+    availability-zones:
+      gz: panyu
+    prefer-same-zone-eureka: true
+    serviceUrl:
+      tianhe: http://ze11:9101/eureka/,http://ze12:9102/eureka/,http://ze13:9103/eureka/
+      panyu: http://ze21:9201/eureka/,http://ze22:9202/eureka/,http://ze23:9203/eureka/
+  instance:
+    metadata-map:
+      zone: yanyu
+server:
+  port: 7002
+spring:
+  config:
+    activate:
+      on-profile: zp2
+  application:
+    name: provider-api

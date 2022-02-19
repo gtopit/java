@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: consumer-api
+server:
+  port: 8080
+eureka:
+  instance:
+    metadata-map:
+      zone: tianhe
+  client:
+    region: gz
+    availability-zones:
+      gz: tianhe,panyu
+    prefer-same-zone-eureka: true
+    service-url:
+      tianhe: http://ze11:9101/eureka/,http://ze12:9102/eureka/,http://ze13:9103/eureka/
+      panyu: http://ze21:9201/eureka/,http://ze22:9202/eureka/,http://ze23:9203/eureka/

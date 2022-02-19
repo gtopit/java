@@ -1,0 +1,160 @@
+spring:
+  application:
+    name: e-server
+eureka:
+#  client:
+#    registerWithEureka: false
+#    fetchRegistry: false
+  server:
+    enable-self-preservation: false
+---
+eureka:
+  instance:
+    hostname: e1
+  client:
+    serviceUrl:
+      defaultZone: http://e1:8761/eureka/,http://e2:8762/eureka/,http://e3:8763/eureka/
+spring:
+  config:
+    activate:
+      on-profile: 8761
+server:
+  port: 8761
+
+---
+eureka:
+  instance:
+    hostname: e2
+  client:
+    serviceUrl:
+      defaultZone: http://e1:8761/eureka/,http://e2:8762/eureka/,http://e3:8763/eureka/
+spring:
+  config:
+    activate:
+      on-profile: 8762
+server:
+  port: 8762
+
+---
+eureka:
+  instance:
+    hostname: e3
+  client:
+    serviceUrl:
+      defaultZone: http://e1:8761/eureka/,http://e2:8762/eureka/,http://e3:8763/eureka/
+spring:
+  config:
+    activate:
+      on-profile: 8763
+server:
+  port: 8763
+
+
+################################????#######################################
+---
+eureka:
+  instance:
+    hostname: ze11
+  client:
+    region: gz
+    availability-zones:
+      gz: tianhe,panyu
+    serviceUrl:
+      tianhe: http://ze11:9101/eureka/,http://ze12:9102/eureka/,http://ze13:9103/eureka/
+      panyu: http://ze21:9201/eureka/,http://ze22:9202/eureka/,http://ze23:9203/eureka/
+spring:
+  config:
+    activate:
+      on-profile: 9101
+server:
+  port: 9101
+
+---
+eureka:
+  instance:
+    hostname: ze12
+  client:
+    region: gz
+    availability-zones:
+      gz: tianhe,panyu
+    serviceUrl:
+      tianhe: http://ze11:9101/eureka/,http://ze12:9102/eureka/,http://ze13:9103/eureka/
+      panyu: http://ze21:9201/eureka/,http://ze22:9202/eureka/,http://ze23:9203/eureka/
+spring:
+  config:
+    activate:
+      on-profile: 9102
+server:
+  port: 9102
+
+---
+eureka:
+  instance:
+    hostname: ze13
+  client:
+    region: gz
+    availability-zones:
+      gz: tianhe,panyu
+    serviceUrl:
+      tianhe: http://ze11:9101/eureka/,http://ze12:9102/eureka/,http://ze13:9103/eureka/
+      panyu: http://ze21:9201/eureka/,http://ze22:9202/eureka/,http://ze23:9203/eureka/
+spring:
+  config:
+    activate:
+      on-profile: 9103
+server:
+  port: 9103
+
+---
+eureka:
+  instance:
+    hostname: ze21
+  client:
+    region: gz
+    availability-zones:
+      gz: panyu,tianhe
+    serviceUrl:
+      tianhe: http://ze11:9101/eureka/,http://ze12:9102/eureka/,http://ze13:9103/eureka/
+      panyu: http://ze21:9201/eureka/,http://ze22:9202/eureka/,http://ze23:9203/eureka/
+spring:
+  config:
+    activate:
+      on-profile: 9201
+server:
+  port: 9201
+
+---
+eureka:
+  instance:
+    hostname: ze22
+  client:
+    region: gz
+    availability-zones:
+      gz: panyu,tianhe
+    serviceUrl:
+      tianhe: http://ze11:9101/eureka/,http://ze12:9102/eureka/,http://ze13:9103/eureka/
+      panyu: http://ze21:9201/eureka/,http://ze22:9202/eureka/,http://ze23:9203/eureka/
+spring:
+  config:
+    activate:
+      on-profile: 9202
+server:
+  port: 9202
+
+---
+eureka:
+  instance:
+    hostname: ze23
+  client:
+    region: gz
+    availability-zones:
+      gz: panyu,tianhe
+    serviceUrl:
+      tianhe: http://ze11:9101/eureka/,http://ze12:9102/eureka/,http://ze13:9103/eureka/
+      panyu: http://ze21:9201/eureka/,http://ze22:9202/eureka/,http://ze23:9203/eureka/
+spring:
+  config:
+    activate:
+      on-profile: 9203
+server:
+  port: 9203
